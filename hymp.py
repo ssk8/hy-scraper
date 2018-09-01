@@ -8,12 +8,6 @@ path = '/home/curt/Downloads'
 dir_name = URL.split('/')[-1]
 full_path = os.path.join(path, dir_name)
 
-if dir_name in os.listdir(path):
-    raise Exception('Already exists!')
-else:
-    os.mkdir(full_path)
-
-
 def pull_site(current_url):
     raw_site_page = requests.get(current_url) #Pull down the site.
     raw_site_page.raise_for_status()  #Confirm site was pulled. Error if not
@@ -46,6 +40,12 @@ def download_track(url):
 
 
 if __name__ == "__main__":
+    
+    if dir_name in os.listdir(path):
+        raise Exception('Already exists!')
+    else:
+        os.mkdir(full_path)
+    
     parent_page = pull_site(URL)
     mp3_page_urls = scrape_parent_page(parent_page)
     for mp3_page_url in mp3_page_urls:
