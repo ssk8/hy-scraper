@@ -9,8 +9,8 @@ dir_name = URL.split('/')[-1]
 full_path = os.path.join(path, dir_name)
 
 def pull_site(current_url):
-    raw_site_page = requests.get(current_url) #Pull down the site.
-    raw_site_page.raise_for_status()  #Confirm site was pulled. Error if not
+    raw_site_page = requests.get(current_url)
+    raw_site_page.raise_for_status()
     return raw_site_page
 
 
